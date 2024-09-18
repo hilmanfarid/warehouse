@@ -49,14 +49,6 @@ services:
       - ./db/migrations:/db/migrations
     command:
       [ "-path", "/db/migrations/", "-database",  "mysql://root:rootpw@tcp(db-mysql:3306)/warehouse_development?multiStatements=true", "up" ]
-  go-cron-python:
-    image: hbasria/docker-go-cron-python:3.10-alpin
-    restart: always
-    volumes:
-      - /script/unstuck:/script
-    environment:
-      - SCHEDULE=@daily
-      - HEALTHCHECK_PORT=8080
 networks:
   mynet:
     external: true
